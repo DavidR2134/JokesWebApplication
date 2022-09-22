@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JokesApplication.Data;
 using JokesApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JokesApplication.Controllers
 {
@@ -55,6 +56,7 @@ namespace JokesApplication.Controllers
             return View(jokes);
         }
 
+        [Authorize]
         // GET: Jokes/Create
         public IActionResult Create()
         {
@@ -64,6 +66,7 @@ namespace JokesApplication.Controllers
         // POST: Jokes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id,JokeName,JokeAnswer")] Jokes jokes)
@@ -78,6 +81,7 @@ namespace JokesApplication.Controllers
         }
 
         // GET: Jokes/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Jokes == null)
@@ -96,6 +100,7 @@ namespace JokesApplication.Controllers
         // POST: Jokes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,JokeName,JokeAnswer")] Jokes jokes)
@@ -129,6 +134,7 @@ namespace JokesApplication.Controllers
         }
 
         // GET: Jokes/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Jokes == null)
@@ -147,6 +153,7 @@ namespace JokesApplication.Controllers
         }
 
         // POST: Jokes/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

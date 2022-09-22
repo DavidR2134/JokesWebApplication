@@ -15,9 +15,6 @@
             <th>
                 Joke
             </th>
-            <th>
-                Answer
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -26,9 +23,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.JokeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JokeAnswer)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
